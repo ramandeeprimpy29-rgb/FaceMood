@@ -1,0 +1,23 @@
+
+import cv2
+
+camera = cv2.VideoCapture(0)
+
+if not camera.isOpened():
+    print("Camera open nahi ho raha!")
+else:
+    print("Camera successfully open ho gaya!")
+
+while camera.isOpened():
+    success, frame = camera.read()
+
+    if not success:
+        break
+
+    cv2.imshow("FaceMood - Webcam Test", frame)
+
+    if cv2.waitKey(1) & 0xFF == ord("q"):
+        break
+
+camera.release()
+cv2.destroyAllWindows()
